@@ -1,0 +1,79 @@
+.animation div {
+    animation: anim-entete 1s both cubic-bezier(0,1.24,.64,.71);
+}
+
+@keyframes anim-entete {
+    0% {transform: translateX(600px);}
+    100%{transform: translateX(0);}
+}
+
+$columns: 5;
+@for $i from 1 through $columns {
+    .animation div:nth-of-type(#{$i}) {
+        animation-delay: $i#{s};
+    }
+}
+
+
+
+/* animation principale pour mobile*/
+
+    $columns: 5;
+@for $i from 1 through $columns {
+    .principal h3:nth-of-type(#{$i}) {
+        animation: anim-#{$i} 2s 1*$i#{s};
+    }
+}
+
+$tabTranslate: (
+    1: scale(50),
+    2: scale(55),
+    3: scale(60),
+    4: scale(65),
+    5: scale(70)
+);
+
+@each $i , $elem in $tabTranslate {
+    @keyframes anim-#{$i}{
+        0% {transform: $elem;}
+
+        100% {transform: translate(0);}
+    }
+}
+
+
+/* animation principale pour desktop*/
+@include desktop{
+    $columns: 5;
+@for $i from 1 through $columns {
+    .principal h3:nth-of-type(#{$i}) {
+        animation: anim-#{$i} 1s .5*$i#{s} both cubic-bezier(.29,1.65,.59,.38);
+    }
+}
+
+$tabTranslate: (
+    1: translateY(-900px),
+    2: translateY(-900px),
+    3: translateX(-700px),
+    4: translateY(900px),
+    5: translateY(900px)
+);
+
+@each $i , $elem in $tabTranslate {
+    @keyframes anim-#{$i}{
+        0% {transform: $elem;}
+
+        100% {transform: translate(0);}
+    }
+}
+}
+
+/*animation annonce*/
+.annonce1{
+    transition: transform .2s;
+}
+
+.annonce1:hover{
+    transform: scale(1.2) rotate(10deg);
+    
+}

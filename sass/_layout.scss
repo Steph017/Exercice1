@@ -1,0 +1,230 @@
+* {
+    margin : 0;
+    padding :0;
+}
+
+body {
+    width : 100vw;
+    height : 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+
+body::after {
+    content : "";
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 47%, 0% 0%);
+    background-color: couleur(primaire);
+    position: absolute;
+    width : 100%;
+    height : 100%;
+    top : 0;
+    bottom :0;
+    left :0;
+    right : 0;
+    z-index: -1;
+    
+    @include desktop    
+    {
+        clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 40% 100%, 66% 48%, 36% 0);
+    }
+    
+}
+
+h1{font-size:4rem ;}
+h2{font-size:3rem ;}
+h3{font-size:2rem ;}
+h4{font-size:1rem ;}
+h5{font-size:.8rem ;}
+h6{font-size: .7rem ;}
+p {
+    font-size: .6rem;
+}
+
+/*menu burger*/
+#burger{
+    background-color: rgb(53, 51, 51);
+    border-radius: 5rem;
+    padding: .9rem;
+}
+#chkburger{
+    display: none;
+    
+}
+
+#chkburger:checked ~ nav{
+    clip-path: ellipse(50% 175% at 48% 50%);
+}
+
+.menu {
+    display: flex;
+    margin: 1rem;
+
+    nav {
+        display: flex;
+        align-items: center;
+        background-color: rgb(202, 196, 196);
+        transition: clip-path 1s;
+        clip-path: ellipse(50% 162% at -50% 50%);
+    }
+
+    a{
+        display: block;
+        padding: .5rem;
+    }
+
+    a:hover{
+        border-radius: 50%;
+        background-color: rgb(182, 171, 189);
+        transition: opacity 1s;
+        opacity: 50%;
+    }
+}
+
+.bloc {
+    border : 6px double rgb(50, 39, 51);
+    background-color:transparent;
+    color :rgb(113, 97, 119);
+    font-size: 3rem;
+    margin-left : 0;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+  
+}
+
+.bloc img {
+    width : 100px;
+    height : 100px;
+    display: block;
+    border-radius :20%;
+    margin-right : 15px;
+}
+
+.grille {
+    display : grid;
+    width: 80%;
+    margin : 0 auto;
+    grid-gap : 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-areas: 
+        "entete entete entete"
+        "menu menu menu"
+        "annonce1 annonce1 annonce1"
+        "principal principal principal"
+        "pied-page pied-page pied-page";
+        @include desktop    
+        {
+        grid-template-areas: 
+            "entete entete entete"
+            "menu menu menu"
+            "principal annonce1 annonce1"
+            "pied-page pied-page pied-page";
+        }
+}
+
+.entete{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5vh;
+    section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            padding: 2px;
+        }
+        div:hover{
+            color: rgb(185, 164, 190);
+        }
+        
+        @include desktop {
+
+            div{
+                width: 55px;
+                height: 55px;
+                padding: 5px;
+            }
+            
+             div:hover{
+                background-color: rgb(185, 164, 190);
+                color :rgb(113, 97, 119);
+                border-radius: 10% ;
+                opacity: 80%;
+            }
+        }
+        
+    }
+}
+
+.annonce1{
+        grid-area: annonce1;
+        background-color: #7f708a;
+        color: #e9edf1;
+        border-radius: 10px;
+        box-shadow: 7px 3px 11px 4px #757472;
+        padding: 42px;
+        margin: 20px;
+        height: 40vh;
+    div
+        {
+            font-size: .4em;
+            display:flex;
+            align-items: center;
+        }
+        
+        @include desktop{
+            height: 45vh;
+        }
+        
+    }
+
+.principal{
+        display : flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+    @include desktop
+        {
+            height: 55vh;
+
+            h3
+            {
+            padding: 1.5rem 0 1.5rem 0;
+            }
+        }
+        
+}
+
+.entete{
+    grid-area: entete;
+
+}
+
+.menu{
+    grid-area: menu;
+
+}
+.annonce1{
+    grid-area: annonce1;
+    }
+
+.principal{
+    grid-area: principal;
+} 
+
+.pied-page{
+    grid-area: pied-page;
+}
+

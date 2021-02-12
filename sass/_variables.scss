@@ -1,0 +1,13 @@
+$couleur_desktop: #f8dbdb;
+$couleurs : (
+    primaire : $couleur_desktop,
+    text:#0c0c0ce7,
+    primaire_pale : lighten($couleur_desktop, 25%)
+    );
+
+
+@function couleur($propriete){
+    @return map-get($couleurs, $propriete);
+}
+
+
